@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  front:
+    build: front
+    image: otomato/istio-games-front:${TAG-latest}
+    
+  aleph:
+    build: aleph
+    image: otomato/istio-games-aleph:${TAG-latest}
+
+  beth:
+    build: beth
+    image: otomato/istio-games-beth:${TAG-latest}
+
+  mongo:
+    image: mongo
+
+ 
