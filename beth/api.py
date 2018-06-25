@@ -9,7 +9,7 @@ app.register_blueprint(swagger)
 # required. See http://swagger.io/specification/#infoObject for details.
 app.config['SWAGGER_INFO'] = {
     'title': 'Otomato Beth Service',
-    'version': '0.1',
+    'version': '0.2',
     'description': 'return some data',
     'termsOfService': 'my terms of service',
     'contact': {
