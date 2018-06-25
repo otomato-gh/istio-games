@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: beth
+  labels:
+    app: beth
+spec:
+  ports:
+    - name: http-beth 
+      port: 80
+      protocol: TCP
+      targetPort: 80
+  selector:
+      app: beth
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: beth
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: beth
+    spec:
+      containers:
+      - name: beth
+        image: otomato/istio-games-beth:0.2
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

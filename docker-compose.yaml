@@ -4,6 +4,8 @@ services:
   front:
     build: front
     image: otomato/istio-games-front:${TAG-latest}
+    ports:
+      - "5000:80"
     
   aleph:
     build: aleph
