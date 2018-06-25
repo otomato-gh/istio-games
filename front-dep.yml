@@ -26,7 +26,7 @@ spec:
     spec:
       containers:
       - name: front
-        image: otomato/istio-games-front:0.2
+        image: otomato/istio-games-front:0.3
         imagePullPolicy: Always
         ports:
         - containerPort: 80

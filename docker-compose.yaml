@@ -3,17 +3,17 @@ version: "3"
 services:
   front:
     build: front
-    image: otomato/istio-games-front:${TAG-latest}
+    image: otomato/istio-games-front:${TAG-0.3}
     ports:
       - "5000:80"
     
   aleph:
     build: aleph
-    image: otomato/istio-games-aleph:${TAG-latest}
+    image: otomato/istio-games-aleph:${TAG-0.2}
 
   beth:
     build: beth
-    image: otomato/istio-games-beth:${TAG-latest}
+    image: otomato/istio-games-beth:${TAG-0.2}
 
   mongo:
     image: mongo
