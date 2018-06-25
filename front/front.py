@@ -3,6 +3,7 @@ import requests
 
 app = Flask(__name__)
 app.config.from_object('settings')
+app.config.from_object('version')
 from flask_bootstrap import Bootstrap
 Bootstrap(app)
 
@@ -33,6 +34,10 @@ def getForwardHeaders(request):
 @app.route('/healthz')
 def healthz():
     return 'Healthy'
+
+@app.route('/version')
+def version():
+    return app.config['VERSION']
 
 @app.route('/')
 def hello_world():
