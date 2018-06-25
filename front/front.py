@@ -46,4 +46,4 @@ def backends():
             out += "Backend: " + be + "| Version:" + version + "<br>"
     return out
 
-app.run(host='0.0.0.0', debug=True)
+app.run(host='0.0.0.0', port='80', debug=True)
