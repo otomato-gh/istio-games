@@ -9,7 +9,7 @@ app.register_blueprint(swagger)
 # required. See http://swagger.io/specification/#infoObject for details.
 app.config['SWAGGER_INFO'] = {
     'title': 'Otomato Aleph Service',
-    'version': '0.2',
+    'version': '0.3',
     'description': 'return some data',
     'termsOfService': 'my terms of service',
     'contact': {
