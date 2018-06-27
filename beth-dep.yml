@@ -27,7 +27,7 @@ spec:
     spec:
       containers:
       - name: beth
-        image: otomato/istio-games-beth:0.2
+        image: otomato/istio-games-beth:0.3
         imagePullPolicy: Always
         ports:
         - containerPort: 80

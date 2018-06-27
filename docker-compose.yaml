@@ -9,13 +9,12 @@ services:
     
   aleph:
     build: aleph
-    image: otomato/istio-games-aleph:${TAG-0.2}
+    image: otomato/istio-games-aleph:${TAG-0.3}
 
   beth:
     build: beth
-    image: otomato/istio-games-beth:${TAG-0.2}
+    image: otomato/istio-games-beth:${TAG-0.3}
 
   mongo:
     image: mongo
-
  
