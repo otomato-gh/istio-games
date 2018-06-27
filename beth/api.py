@@ -32,7 +32,6 @@ def version():
 
 @app.route('/name')
 def name():
-    pingresp = ping()
     return app.config['SWAGGER_INFO']['title']
 
 @app.route('/ping')
