@@ -23,7 +23,7 @@ spec:
     metadata:
       labels:
         app: beth
-        version: v02
+        version: v03
     spec:
       containers:
       - name: beth
