@@ -1,0 +1,59 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: aleph
+spec:
+  hosts:
+  - aleph
+  http:
+  - route:
+    - destination:
+        host: aleph
+        port:
+          number: 80
+        subset: v02
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: beth
+spec:
+  hosts:
+  - beth
+  http:
+  - route:
+    - destination:
+        host: beth
+        port:
+          number: 80
+        subset: v03
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+spec:
+  host: aleph
+  subsets:
+    - name: v02
+      labels:
+        version: v02
+    - name: v03
+      labels:
+        version: v03
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: beth
+spec:
+  host: beth
+  subsets:
+    - name: v02
+      labels:
+        version: v02
+    - name: v03
+      labels:
+        version: v03
+
