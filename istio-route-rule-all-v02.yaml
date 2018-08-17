@@ -27,7 +27,7 @@ spec:
         host: beth
         port:
           number: 80
-        subset: v03
+        subset: v02
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
