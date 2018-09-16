@@ -4,8 +4,8 @@
 
 
 #versions
-frontVersion: 0.3
-alephVersion: 0.3
+frontVersion: 0.4
+alephVersion: 0.2
 bethVersion: 0.2
 
 nameOverride: ""
