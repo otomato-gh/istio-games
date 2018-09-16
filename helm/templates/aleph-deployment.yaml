@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: aleph
+  labels:
+    chart: {{ include "chart.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: aleph
+        version: v02
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: aleph
+        image: otomato/istio-games-aleph:{{ .Values.alephVersion }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

@@ -1,0 +1,27 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: front
+  labels:
+    app: {{ include "chart.name" . }}
+    chart: {{ include "chart.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: front
+      release: {{ .Release.Name }}
+  template:
+    metadata:
+      labels:
+        app: front
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: front
+        image: otomato/istio-games-front:{{ .Values.frontVersion }}
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80

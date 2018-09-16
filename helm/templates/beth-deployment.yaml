@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: beth
+  labels:
+    chart: {{ include "chart.chart" . }}
+    release: {{ .Release.Name }}
+    heritage: {{ .Release.Service }}
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: beth
+        version: v02
+        release: {{ .Release.Name }}
+    spec:
+      containers:
+      - name: beth
+        image: otomato/istio-games-beth:0.3
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
