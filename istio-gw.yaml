@@ -28,32 +28,3 @@ spec:
         host: front.games.svc.cluster.local
         port:
           number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: aleph
-spec:
-  hosts:
-  - aleph
-  http:
-  - route:
-    - destination:
-        host: aleph.games.svc.cluster.local
-        port:
-          number: 80
----
-apiVersion: networking.istio.io/v1alpha3
-kind: VirtualService
-metadata:
-  name: beth
-spec:
-  hosts:
-  - beth
-  http:
-  - route:
-    - destination:
-        host: beth.games.svc.cluster.local
-        port:
-          number: 80
-
