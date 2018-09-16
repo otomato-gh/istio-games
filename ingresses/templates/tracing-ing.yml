@@ -1,0 +1,14 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: nginx
+  name: istio-tracing
+spec:
+  rules:
+  - host: tracing.{{ .Values.ingress_ip }}.nip.io
+    http:
+      paths:
+      - backend:
+          serviceName: tracing
+          servicePort: 80

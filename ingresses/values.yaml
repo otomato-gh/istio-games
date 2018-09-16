@@ -1,0 +1,5 @@
+# Default values for ingresses.
+# This is a YAML-formatted file.
+# Declare variables to be passed into your templates.
+
+ingress_ip=159.8.233.5
