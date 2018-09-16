@@ -1,6 +1,8 @@
 import time
+import random
 from eve import Eve
 from eve_swagger import swagger, add_documentation
+from flask import abort
 from flask_prometheus import monitor
 
 app = Eve()
@@ -9,7 +11,7 @@ app.register_blueprint(swagger)
 # required. See http://swagger.io/specification/#infoObject for details.
 app.config['SWAGGER_INFO'] = {
     'title': 'Otomato Aleph Service',
-    'version': '0.3',
+    'version': '0.4',
     'description': 'return some data',
     'termsOfService': 'my terms of service',
     'contact': {
@@ -28,8 +30,11 @@ def healthz():
 
 @app.route('/version')
 def version():
+    #randomly return errors
+    if random.randrange(10) < 5:
+        abort(500)
     return app.config['SWAGGER_INFO']['version']
-
+ 
 @app.route('/name')
 def name():
     pingresp = ping()
