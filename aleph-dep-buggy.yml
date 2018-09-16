@@ -1,0 +1,19 @@
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: aleph-buggy
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: aleph
+        version: v04
+    spec:
+      containers:
+      - name: aleph
+        image: otomato/istio-games-aleph:buggy
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
