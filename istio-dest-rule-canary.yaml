@@ -1,0 +1,14 @@
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+spec:
+  host: aleph
+  subsets:
+    - name: production
+      labels:
+        version: v02
+    - name: canary
+      labels:
+        version: v03

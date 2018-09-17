@@ -12,12 +12,12 @@ spec:
         host: aleph
         port:
           number: 80
-        subset: v02
+        subset: production
       weight: 90
     - destination:
         host: aleph
         port:
           number: 80
-        subset: v03
+        subset: canary
       weight: 10
 
