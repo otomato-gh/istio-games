@@ -17,3 +17,14 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
+---
+apiVersion: otomato.link/v1alpha1
+kind: BirdWatch
+metadata:
+  name: aleph
+spec:
+  canary_version: v04
+  if_unhealthy: rollback
+  increment: 10
+  metric: 'flask_request_count{endpoint="/version",http_status="500",instance="aleph.games.svc.cluster.local:8000",job="aleph",method="GET"}'
+  service: aleph
