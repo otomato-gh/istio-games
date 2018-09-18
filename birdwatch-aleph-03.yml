@@ -1,0 +1,10 @@
+apiVersion: otomato.link/v1alpha1
+kind: BirdWatch
+metadata:
+  name: aleph
+spec:
+  canary_version: v03
+  if_unhealthy: rollback
+  increment: 20
+  metric: flask_request_count{endpoint="/version",http_status="500",job="aleph"}
+  service: aleph
