@@ -11,4 +11,4 @@ spec:
         version: v02
     - name: canary
       labels:
-        version: v03
+        version: v02

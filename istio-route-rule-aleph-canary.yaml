@@ -13,11 +13,11 @@ spec:
         port:
           number: 80
         subset: production
-      weight: 90
+      weight: 100
     - destination:
         host: aleph
         port:
           number: 80
         subset: canary
-      weight: 10
+      weight: 0
 
