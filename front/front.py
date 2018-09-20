@@ -67,10 +67,14 @@ def backends():
         r = requests.get("http://"+be+"/version", headers=headers)
         if r.status_code != 500:
             backends[be] = {}
-            print ('initialized a dict')
             backends[be]['title'] = requests.get("http://"+be+"/name", headers=headers).text
             print (backends[be]['title'])
             backends[be]['version'] = r.text
+        else:
+            backends[be] = {}
+            backends[be]['title'] = be
+            backends[be]['version'] = "Error: "+r.status_code
+
      #       out += "Backend: " + be + "| Version:" + version + "<br>"
     return render_template(
         'front.html',
