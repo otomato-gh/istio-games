@@ -6,6 +6,7 @@ metadata:
     nginx.ingress.kubernetes.io/proxy-body-size: 50m
     nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
     nginx.ingress.kubernetes.io/ssl-redirect: "false"
+  name: prometheus
 spec:
   rules:
   - host: prometheus.159.8.233.5.nip.io

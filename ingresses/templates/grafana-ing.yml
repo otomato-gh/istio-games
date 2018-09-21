@@ -6,7 +6,7 @@ metadata:
   name: istio-grafana
 spec:
   rules:
-  - host: grafana.159.8.233.5.nip.io
+  - host: grafana.{{ .Values.ingress_ip }}.nip.io
     http:
       paths:
       - backend:
