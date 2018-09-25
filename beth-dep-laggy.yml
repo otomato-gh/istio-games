@@ -2,18 +2,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: aleph-buggy
+  name: beth-laggy
 spec:
   replicas: 2
   template:
     metadata:
       labels:
-        app: aleph
+        app: beth
         version: v04
     spec:
       containers:
-      - name: aleph
-        image: otomato/istio-games-aleph:buggy
+      - name: beth
+        image: otomato/istio-games-beth:laggy
         imagePullPolicy: Always
         ports:
         - containerPort: 80
@@ -21,11 +21,11 @@ spec:
 apiVersion: otomato.link/v1alpha1
 kind: BirdWatch
 metadata:
-  name: aleph
+  name: beth
 spec:
   canary_version: v04
   if_unhealthy: rollback
   increment: 2
-  metric: 'flask_request_count{http_status="500",job="aleph"}'
-  service: aleph
-  deviation: 1
+  metric: 'flask_request_count{http_status="500",job="beth"}'
+  service: beth
+  deviation: 10

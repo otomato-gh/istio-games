@@ -3,8 +3,9 @@ kind: BirdWatch
 metadata:
   name: aleph
 spec:
-  canary_version: v03
+  canary_version: v02
   if_unhealthy: rollback
-  increment: 10
+  increment: 2
+  deviation: 300
   metric: flask_request_count{endpoint="/version",http_status="500",job="aleph"}
   service: aleph

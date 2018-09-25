@@ -12,3 +12,18 @@ spec:
     - name: canary
       labels:
         version: v02
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: beth
+spec:
+  host: beth
+  subsets:
+    - name: production
+      labels:
+        version: v03
+    - name: canary
+      labels:
+        version: v03
+
