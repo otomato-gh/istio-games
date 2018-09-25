@@ -11,7 +11,7 @@ spec:
       name: http
       protocol: HTTP
     hosts:
-    - "prometheus.159.8.249.43.nip.io"
+    - "prometheus.{{ .Values.gateway_ip }}.nip.io"
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
@@ -19,12 +19,12 @@ metadata:
   name: prometheus
 spec:
   hosts:
-  - "prometheus.159.8.249.43.nip.io"
+  - "prometheus.{{ .Values.gateway_ip }}.nip.io"
   gateways:
   - prometheus-gateway
   http:
   - route:
     - destination:
-        host: prometheus-prometheus-server.games.svc.cluster.local
+        host: prometheus-server.games.svc.cluster.local
         port:
           number: 80
