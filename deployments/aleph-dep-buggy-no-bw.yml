@@ -2,18 +2,18 @@
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
-  name: aleph-v03
+  name: aleph-v04
 spec:
   replicas: 2
   template:
     metadata:
       labels:
         app: aleph
-        version: v03
+        version: v04
     spec:
       containers:
       - name: aleph
-        image: otomato/istio-games-aleph:0.3
+        image: otomato/istio-games-aleph:0.4
         imagePullPolicy: Always
         ports:
         - containerPort: 80
