@@ -17,15 +17,3 @@ spec:
         imagePullPolicy: Always
         ports:
         - containerPort: 80
----
-apiVersion: otomato.link/v1alpha1
-kind: BirdWatch
-metadata:
-  name: aleph
-spec:
-  canary_version: v03
-  if_unhealthy: freeze
-  increment: 2
-  metric: 'flask_request_count{http_status="500",job="aleph"}'
-  service: aleph
-  deviation: 5
