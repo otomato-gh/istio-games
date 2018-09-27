@@ -64,17 +64,20 @@ def backends():
     backends = {}
     out = "Backends List:<br>"
     for be in app.config['BACKENDS']:
-        r = requests.get("http://"+be+"/version", headers=headers)
-        if r.status_code != 500:
-            backends[be] = {}
-            backends[be]['title'] = requests.get("http://"+be+"/name", headers=headers).text
-            print (backends[be]['title'])
-            backends[be]['version'] = r.text
-        else:
-            backends[be] = {}
+        try:
+            r = requests.get("http://"+be+"/version", headers=headers)
+            if r.status_code != 500:
+                backends[be] = {}
+                backends[be]['title'] = requests.get("http://"+be+"/name", headers=headers, timeout=5).text
+                print (backends[be]['title'])
+                backends[be]['version'] = r.text
+            else:
+                backends[be] = {}
+                backends[be]['title'] = be
+                backends[be]['version'] = "Error: {}".format(r.status_code)
+        except requests.exceptions.ReadTimeout:
             backends[be]['title'] = be
-            backends[be]['version'] = "Error: "+r.status_code
-
+            backends[be]['version'] = "Is taking too long to answer. Please try again later"    
      #       out += "Backend: " + be + "| Version:" + version + "<br>"
     return render_template(
         'front.html',
