@@ -1,0 +1,18 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: loader
+  namespace: games
+spec:
+  template:
+    metadata:
+      labels:
+        app: loader
+    spec:
+      containers:
+      - name: loader
+        image: otomato/istio-games-loader:latest
+        imagePullPolicy: Always
+        command: 
+        - sleep 
+        - infinity
