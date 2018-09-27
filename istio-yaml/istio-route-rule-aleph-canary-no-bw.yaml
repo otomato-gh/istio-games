@@ -8,19 +8,17 @@ spec:
   hosts:
   - aleph
   http:
-  - match:
-    - headers:
-        cookie:
-          regex: "^(.*?;)?(user=developer)(;.*)?$"
-    route:
-      - destination:
-          host: aleph
-          port:
-            number: 80
-          subset: v03
   - route:
     - destination:
         host: aleph
         port:
           number: 80
         subset: v02
+      weight: 80
+    - destination:
+        host: aleph
+        port:
+          number: 80
+        subset: v03
+      weight: 20
+

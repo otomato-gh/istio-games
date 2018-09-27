@@ -8,16 +8,20 @@ spec:
   hosts:
   - aleph
   http:
-  - match:
+  - fault:
+      delay:
+        fixedDelay: 7s
+        percent: 100
+    match:
     - headers:
         cookie:
           regex: "^(.*?;)?(user=developer)(;.*)?$"
     route:
-      - destination:
-          host: aleph
-          port:
-            number: 80
-          subset: v03
+    - destination:
+        host: aleph
+        port:
+          number: 80
+        subset: v03
   - route:
     - destination:
         host: aleph

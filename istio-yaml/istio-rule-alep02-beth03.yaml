@@ -3,6 +3,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: aleph
+  namespace: games
 spec:
   hosts:
   - aleph
@@ -18,6 +19,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: VirtualService
 metadata:
   name: beth
+  namespace: games
 spec:
   hosts:
   - beth
@@ -27,12 +29,13 @@ spec:
         host: beth
         port:
           number: 80
-        subset: v02
+        subset: v03
 ---
 apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: aleph
+  namespace: games 
 spec:
   host: aleph
   subsets:
@@ -47,6 +50,7 @@ apiVersion: networking.istio.io/v1alpha3
 kind: DestinationRule
 metadata:
   name: beth
+  namespace: games
 spec:
   host: beth
   subsets:
