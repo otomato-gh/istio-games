@@ -21,4 +21,18 @@ spec:
           number: 80
         subset: canary
       weight: 0
-
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+  namespace: games
+spec:
+  host: aleph
+  subsets:
+    - name: production
+      labels:
+        version: v02
+    - name: canary
+      labels:
+        version: v02

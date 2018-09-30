@@ -3,6 +3,7 @@ apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
   name: aleph-v03
+  namespace: games
 spec:
   replicas: 2
   template:

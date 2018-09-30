@@ -13,12 +13,27 @@ spec:
         host: aleph
         port:
           number: 80
-        subset: v02
-      weight: 80
+        subset: production
+      weight: 99
     - destination:
         host: aleph
         port:
           number: 80
-        subset: v03
-      weight: 20
+        subset: canary
+      weight: 1
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+  namespace: games
+spec:
+  host: aleph
+  subsets:
+    - name: production
+      labels:
+        version: v02
+    - name: canary
+      labels:
+        version: v03
 

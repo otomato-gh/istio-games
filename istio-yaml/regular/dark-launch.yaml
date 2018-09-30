@@ -24,3 +24,17 @@ spec:
         port:
           number: 80
         subset: v02
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+spec:
+  host: aleph
+  subsets:
+    - name: v02
+      labels:
+        version: v02
+    - name: v03
+      labels:
+        version: v03
