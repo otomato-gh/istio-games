@@ -26,6 +26,7 @@ spec:
   canary_version: v03
   if_unhealthy: freeze
   increment: 5
+  interval: 2
   metric: sum(irate(istio_requests_total{destination_service_name="aleph",destination_version="v03",response_code="500"}[30s]))
   service: aleph
-  deviation: 2
+  deviation: 1
