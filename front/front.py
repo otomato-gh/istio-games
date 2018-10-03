@@ -65,10 +65,12 @@ def backends():
     out = "Backends List:<br>"
     for be in app.config['BACKENDS']:
         try:
-            r = requests.get("http://"+be+"/version", headers=headers)
+            r = requests.get("http://"+be+"/version", headers=headers, timeout=10)
             if r.status_code != 500:
                 backends[be] = {}
-                backends[be]['title'] = requests.get("http://"+be+"/name", headers=headers, timeout=5).text
+                backends[be]['title'] = requests.get("http://"+be+"/name", 
+                                                     headers=headers, 
+                                                     timeout=10).text
                 print (backends[be]['title'])
                 backends[be]['version'] = r.text
             else:
