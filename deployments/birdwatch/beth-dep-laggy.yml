@@ -26,6 +26,6 @@ spec:
   canary_version: v04
   if_unhealthy: rollback
   increment: 2
-  metric: 'flask_request_count{http_status="500",job="beth"}'
+  metric: 'irate(istio_request_duration_seconds_sum{destination_service_name="beth",destination_version="v04"}[30s])'
   service: beth
-  deviation: 10
+  deviation: 30
