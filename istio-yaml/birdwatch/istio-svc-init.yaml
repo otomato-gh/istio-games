@@ -1,0 +1,89 @@
+#initializes gateway and the virtualservices for front, aleph and beth 
+apiVersion: networking.istio.io/v1alpha3
+kind: Gateway
+metadata:
+  name: games-gateway
+  namespace: games
+spec:
+  selector:
+    istio: ingressgateway # use istio default controller
+  servers:
+  - port:
+      number: 80
+      name: http
+      protocol: HTTP
+    hosts:
+    - "*"
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: games
+  namespace: games
+spec:
+  hosts:
+  - "*"
+  gateways:
+  - games-gateway
+  http:
+  - route:
+    - destination:
+        host: front.games.svc.cluster.local
+        port:
+          number: 80
+
+---
+
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: aleph
+  namespace: games
+spec:
+  hosts:
+  - aleph
+  http:
+  - route:
+    - destination:
+        host: aleph
+        port:
+          number: 80
+        subset: production
+      weight: 100
+    - destination:
+        host: aleph
+        port:
+          number: 80
+        subset: canary
+      weight: 0
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: DestinationRule
+metadata:
+  name: aleph
+  namespace: games
+spec:
+  host: aleph
+  subsets:
+    - name: production
+      labels:
+        version: v02
+    - name: canary
+      labels:
+        version: v02
+
+---
+apiVersion: networking.istio.io/v1alpha3
+kind: VirtualService
+metadata:
+  name: beth
+  namespace: games
+spec:
+  hosts:
+  - beth
+  http:
+  - route:
+    - destination:
+        host: beth.games.svc.cluster.local
+        port:
+          number: 80
