@@ -20,7 +20,7 @@ metadata:
   name: front
   namespace: games
 spec:
-  replicas: 2
+  replicas: 1
   template:
     metadata:
       labels:

@@ -84,6 +84,6 @@ spec:
   http:
   - route:
     - destination:
-        host: beth.games.svc.cluster.local
+        host: beth
         port:
           number: 80
