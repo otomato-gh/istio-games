@@ -14,5 +14,5 @@ spec:
         image: otomato/istio-games-loader:latest
         imagePullPolicy: Always
         command: 
-        - sleep 
-        - infinity
+        - ./loader.sh 
+        - http://front/backends

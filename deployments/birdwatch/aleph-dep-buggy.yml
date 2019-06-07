@@ -27,7 +27,6 @@ spec:
   if_unhealthy: rollback
   increment: 1
   interval: 5
-#  metric: 'avg_over_time(flask_request_count{http_status="500",job="aleph", endpoint="/version"}[5m])'
   metric: sum(irate(istio_requests_total{destination_service_name="aleph",destination_version="v03",response_code="500"}[30s]))
   service: aleph
   deviation: 0.5
